@@ -1,5 +1,5 @@
-import { float64, DateOrDateString, bnString, hexBytesString, ufloat64, uint64 } from "../app";
-import { ETxDirection, ETxStatus, ETxType } from "../app";
+import { float64, DateOrDateString, bnString, hexBytesString, ufloat64, uint64 } from "../interfaces/app";
+import { ETxDirection, ETxStatus, ETxType } from "../interfaces/app";
 
 interface IRes<T> {
   success: boolean;

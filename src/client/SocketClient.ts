@@ -128,12 +128,12 @@ export default class SocketClientRedis extends CustomEventEmitter {
 
   json(data: any = '', format: number = 2): void {
     try {
-      const lines = console.toJson(data, null, format).split('\n');
+      const lines = JSON.stringify(data, null, format).split('\n');
       lines.forEach((line: string) => {
         console.log(`${this.#logPrefix()}: ${this.name}:[${'json'}]`, line);
       });
     } catch (e: any) {
-      console.json({ error: e.message });
+      console.log({ error: e.message });
     }
   }
 

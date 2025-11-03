@@ -1,7 +1,4 @@
-import { config } from 'dotenv';
-import "./interfaces/prototypes/console";
-
-config();
+// import "./interfaces/prototypes/console";
 
 export default {};
 
