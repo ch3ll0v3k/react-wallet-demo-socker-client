@@ -1,0 +1,15 @@
+{
+  "verbose": false,
+  "watch": [
+    "src/**"
+  ],
+  "ext": "ts,json",
+  "ignore": [
+    "src/**/*.spec.ts",
+    "src/public_html/*",
+    "src/**/*.json",
+    "src/async-tasks/**/*.ts",
+    "src/async-subprocess-tasks/**/*.ts"
+  ],
+  "exec": "ts-node --project tsconfig.json ./src/client/index.ts"
+}
