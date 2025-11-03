@@ -3,7 +3,9 @@ import "@app/init";
 import SocketClient from "@app/client/SocketClient";
 import {
   ESocketEvents, IOnAssetPriceUpdateRes, IOnAuthenticationRes,
-  IOnBalancesUpdateRes, IOnNewTransactionsUpdatedRes, IOnTransactionsUpdatedRes
+  IOnBalancesUpdateRes,
+  IOnNewTransactionRes,
+  IOnTransactionUpdatedRes,
 } from "./interfaces.socket";
 
 (async () => {
@@ -29,12 +31,12 @@ import {
     mSocket.json({ [ESocketEvents.onAssetPriceUpdateRes]: res });
   });
 
-  mSocket.on(ESocketEvents.onTransactionsUpdatedRes, (res: IOnTransactionsUpdatedRes) => {
-    mSocket.json({ [ESocketEvents.onTransactionsUpdatedRes]: res });
+  mSocket.on(ESocketEvents.onTransactionUpdatedRes, (res: IOnTransactionUpdatedRes) => {
+    mSocket.json({ [ESocketEvents.onTransactionUpdatedRes]: res });
   });
 
-  mSocket.on(ESocketEvents.onNewTransactionsUpdatedRes, (res: IOnNewTransactionsUpdatedRes) => {
-    mSocket.json({ [ESocketEvents.onNewTransactionsUpdatedRes]: res });
+  mSocket.on(ESocketEvents.onNewTransactionRes, (res: IOnNewTransactionRes) => {
+    mSocket.json({ [ESocketEvents.onNewTransactionRes]: res });
   });
 
   mSocket.connect();

@@ -9,10 +9,11 @@ interface IRes<T> {
 
 export enum ESocketEvents {
   onAuthenticationRes = 'onAuthenticationRes',
+
   onBalancesUpdateRes = 'onBalancesUpdateRes',
   onAssetPriceUpdateRes = 'onAssetPriceUpdateRes',
-  onNewTransactionsUpdatedRes = 'onNewTransactionsUpdatedRes',
-  onTransactionsUpdatedRes = 'onTransactionsUpdatedRes',
+  onNewTransactionRes = 'onNewTransactionRes',
+  onTransactionUpdatedRes = 'onTransactionUpdatedRes',
 }
 
 export interface IOnAuthenticationRes extends IRes<{
@@ -27,7 +28,7 @@ export interface IOnBalancesUpdateRes extends IRes<{
   balanceNative: bnString;
 }> { };
 
-export interface IOnTransactionsUpdatedRes extends IRes<{
+export interface IOnTransactionUpdatedRes extends IRes<{
   id: uint64;
   hash: hexBytesString;
   src: string; // TAnyAddress;
@@ -45,7 +46,7 @@ export interface IOnTransactionsUpdatedRes extends IRes<{
   createdAt: DateOrDateString;
 }> { };
 
-export interface IOnNewTransactionsUpdatedRes extends IRes<{
+export interface IOnNewTransactionRes extends IRes<{
   id: uint64;
   hash: hexBytesString;
   src: string; // TAnyAddress;

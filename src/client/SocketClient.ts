@@ -6,10 +6,10 @@ import { CustomEventEmitter } from './CustomEventEmitter';
 import {
   ESocketEvents,
   IOnAssetPriceUpdateRes,
-  IOnNewTransactionsUpdatedRes,
   IOnAuthenticationRes,
   IOnBalancesUpdateRes,
-  IOnTransactionsUpdatedRes,
+  IOnNewTransactionRes,
+  IOnTransactionUpdatedRes,
 } from './interfaces.socket';
 
 
@@ -19,7 +19,8 @@ export default class SocketClientRedis extends CustomEventEmitter {
   #client: Socket = null;
   #isConnected: boolean = false;
   #isAuthenticated: boolean = false;
-  #protohost: string = `http://0.0.0.0:34501`;
+  // #protohost: string = `http://0.0.0.0:34501`;
+  #protohost: string = `https://react-wallet-dev-test.ngrok.io`;
   #token: string;
 
   constructor(token: string) {
@@ -59,12 +60,12 @@ export default class SocketClientRedis extends CustomEventEmitter {
         this.emit(ESocketEvents.onAssetPriceUpdateRes, res);
       });
 
-      this.#client.on(ESocketEvents.onTransactionsUpdatedRes, (res: IOnTransactionsUpdatedRes) => {
-        this.emit(ESocketEvents.onTransactionsUpdatedRes, res);
+      this.#client.on(ESocketEvents.onTransactionUpdatedRes, (res: IOnTransactionUpdatedRes) => {
+        this.emit(ESocketEvents.onTransactionUpdatedRes, res);
       });
 
-      this.#client.on(ESocketEvents.onNewTransactionsUpdatedRes, (res: IOnNewTransactionsUpdatedRes) => {
-        this.emit(ESocketEvents.onNewTransactionsUpdatedRes, res);
+      this.#client.on(ESocketEvents.onNewTransactionRes, (res: IOnNewTransactionRes) => {
+        this.emit(ESocketEvents.onNewTransactionRes, res);
       });
 
       this.#client.on('disconnect', (reason: Socket.DisconnectReason/*, description?: any*/) => {
@@ -93,8 +94,6 @@ export default class SocketClientRedis extends CustomEventEmitter {
     this.#client.connect();
     return true;
   }
-
-
 
   #getDT(): string {
     const iso = new Date().toISOString();
@@ -136,7 +135,6 @@ export default class SocketClientRedis extends CustomEventEmitter {
       console.log({ error: e.message });
     }
   }
-
 
 }
 
