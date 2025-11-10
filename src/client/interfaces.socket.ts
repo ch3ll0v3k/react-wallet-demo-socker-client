@@ -21,6 +21,7 @@ export interface IOnAuthenticationRes extends IRes<{
 }> { };
 
 export interface IOnBalancesUpdateRes extends IRes<{
+  defiAccountId: uint64;
   defiAddressId: uint64;
   symbol: string;
   balanceUsd: ufloat64;
@@ -33,6 +34,7 @@ export interface IOnTransactionUpdatedRes extends IRes<{
   hash: hexBytesString;
   src: string; // TAnyAddress;
   dest: string; // TAnyAddress;
+  symbol: string;
   isNftTx: boolean;
   isTokenTx: boolean;
   txStatus: ETxStatus;
@@ -51,6 +53,7 @@ export interface IOnNewTransactionRes extends IRes<{
   hash: hexBytesString;
   src: string; // TAnyAddress;
   dest: string; // TAnyAddress;
+  symbol: string;
   isNftTx: boolean;
   isTokenTx: boolean;
   txStatus: ETxStatus;
@@ -59,8 +62,6 @@ export interface IOnNewTransactionRes extends IRes<{
   amountUsd: ufloat64;
   amountFloat: ufloat64;
   amountNative: bnString;
-  isRejected: boolean;
-  rejectedAt: DateOrDateString;
   createdAt: DateOrDateString;
 }> { };
 
