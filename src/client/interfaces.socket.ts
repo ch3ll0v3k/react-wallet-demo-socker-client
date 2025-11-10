@@ -20,6 +20,7 @@ export interface IOnAuthenticationRes extends IRes<{
   session: string;
 }> { };
 
+
 export interface IOnBalancesUpdateRes extends IRes<{
   defiAccountId: uint64;
   defiAddressId: uint64;
@@ -43,8 +44,6 @@ export interface IOnTransactionUpdatedRes extends IRes<{
   amountUsd: ufloat64;
   amountFloat: ufloat64;
   amountNative: bnString;
-  isRejected: boolean;
-  rejectedAt: DateOrDateString;
   createdAt: DateOrDateString;
 }> { };
 
