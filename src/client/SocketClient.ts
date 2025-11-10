@@ -47,25 +47,25 @@ export default class SocketClientRedis extends CustomEventEmitter {
       this.#isConnected = true;
       this.log(`#${this.name}: on:connect: (success)`);
 
-      this.#client.on(ESocketEvents.onAuthenticationRes, (res: IOnAuthenticationRes) => {
+      this.#client.on(ESocketEvents.onAuthentication, (res: IOnAuthenticationRes) => {
         this.#isAuthenticated = res.success;
-        this.emit(ESocketEvents.onAuthenticationRes, res);
+        this.emit(ESocketEvents.onAuthentication, res);
       });
 
-      this.#client.on(ESocketEvents.onBalancesUpdateRes, (res: IOnBalancesUpdateRes) => {
-        this.emit(ESocketEvents.onBalancesUpdateRes, res);
+      this.#client.on(ESocketEvents.onBalancesUpdate, (res: IOnBalancesUpdateRes) => {
+        this.emit(ESocketEvents.onBalancesUpdate, res);
       });
 
-      this.#client.on(ESocketEvents.onAssetPriceUpdateRes, (res: IOnAssetPriceUpdateRes) => {
-        this.emit(ESocketEvents.onAssetPriceUpdateRes, res);
+      this.#client.on(ESocketEvents.onAssetPriceUpdate, (res: IOnAssetPriceUpdateRes) => {
+        this.emit(ESocketEvents.onAssetPriceUpdate, res);
       });
 
-      this.#client.on(ESocketEvents.onTransactionUpdatedRes, (res: IOnTransactionUpdatedRes) => {
-        this.emit(ESocketEvents.onTransactionUpdatedRes, res);
+      this.#client.on(ESocketEvents.onTransactionUpdated, (res: IOnTransactionUpdatedRes) => {
+        this.emit(ESocketEvents.onTransactionUpdated, res);
       });
 
-      this.#client.on(ESocketEvents.onNewTransactionRes, (res: IOnNewTransactionRes) => {
-        this.emit(ESocketEvents.onNewTransactionRes, res);
+      this.#client.on(ESocketEvents.onNewTransaction, (res: IOnNewTransactionRes) => {
+        this.emit(ESocketEvents.onNewTransaction, res);
       });
 
       this.#client.on('disconnect', (reason: Socket.DisconnectReason/*, description?: any*/) => {
@@ -83,6 +83,14 @@ export default class SocketClientRedis extends CustomEventEmitter {
           this.log(`on:error: (${e?.message})`);
         } catch (e: any) {
           this.error(`on:error: (catch): (${e.message})`);
+        }
+      });
+
+      this.#client.on('*', (data: any) => {
+        try {
+          this.log(`on:*:`, { data });
+        } catch (e: any) {
+          this.error(`on:*: (catch): (${e.message})`);
         }
       });
 

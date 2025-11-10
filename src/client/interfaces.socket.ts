@@ -8,12 +8,12 @@ interface IRes<T> {
 }
 
 export enum ESocketEvents {
-  onAuthenticationRes = 'onAuthenticationRes',
+  onAuthentication = 'onAuthentication',
 
-  onBalancesUpdateRes = 'onBalancesUpdateRes',
-  onAssetPriceUpdateRes = 'onAssetPriceUpdateRes',
-  onNewTransactionRes = 'onNewTransactionRes',
-  onTransactionUpdatedRes = 'onTransactionUpdatedRes',
+  onBalancesUpdate = 'onBalancesUpdate',
+  onAssetPriceUpdate = 'onAssetPriceUpdate',
+  onNewTransaction = 'onNewTransaction',
+  onTransactionUpdated = 'onTransactionUpdated',
 }
 
 export interface IOnAuthenticationRes extends IRes<{

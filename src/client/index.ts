@@ -14,7 +14,7 @@ import {
 
   const mSocket = new SocketClient(correctToken);
 
-  mSocket.on(ESocketEvents.onAuthenticationRes, (res: IOnAuthenticationRes) => {
+  mSocket.on(ESocketEvents.onAuthentication, (res: IOnAuthenticationRes) => {
     if (!res.success) {
       return mSocket.error(`#auth: error: ${res.message}`);
     }
@@ -23,20 +23,20 @@ import {
 
   });
 
-  mSocket.on(ESocketEvents.onBalancesUpdateRes, (res: IOnBalancesUpdateRes) => {
-    mSocket.json({ [ESocketEvents.onBalancesUpdateRes]: res });
+  mSocket.on(ESocketEvents.onBalancesUpdate, (res: IOnBalancesUpdateRes) => {
+    mSocket.json({ [ESocketEvents.onBalancesUpdate]: res });
   });
 
-  mSocket.on(ESocketEvents.onAssetPriceUpdateRes, (res: IOnAssetPriceUpdateRes) => {
-    mSocket.json({ [ESocketEvents.onAssetPriceUpdateRes]: res });
+  mSocket.on(ESocketEvents.onAssetPriceUpdate, (res: IOnAssetPriceUpdateRes) => {
+    mSocket.json({ [ESocketEvents.onAssetPriceUpdate]: res });
   });
 
-  mSocket.on(ESocketEvents.onTransactionUpdatedRes, (res: IOnTransactionUpdatedRes) => {
-    mSocket.json({ [ESocketEvents.onTransactionUpdatedRes]: res });
+  mSocket.on(ESocketEvents.onTransactionUpdated, (res: IOnTransactionUpdatedRes) => {
+    mSocket.json({ [ESocketEvents.onTransactionUpdated]: res });
   });
 
-  mSocket.on(ESocketEvents.onNewTransactionRes, (res: IOnNewTransactionRes) => {
-    mSocket.json({ [ESocketEvents.onNewTransactionRes]: res });
+  mSocket.on(ESocketEvents.onNewTransaction, (res: IOnNewTransactionRes) => {
+    mSocket.json({ [ESocketEvents.onNewTransaction]: res });
   });
 
   mSocket.connect();
